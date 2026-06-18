@@ -1,0 +1,82 @@
+/* ── Color ─────────────────────────────────────────────────
+   Base ramps + semantic aliases. Base values are raw palette
+   steps; build UIs from the semantic aliases below them.
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  /* Neutrals — warm slate ("ink") */
+  --ink-950: #0E1116;
+  --ink-900: #16191F;
+  --ink-800: #1F242C;
+  --ink-700: #2C333D;
+  --ink-600: #434C58;
+  --ink-500: #5C6675;
+  --ink-400: #818B9A;
+  --ink-300: #A8B0BD;
+  --ink-200: #CDD3DC;
+  --ink-100: #E6E9EE;
+  --ink-50:  #F4F6F9;
+  --paper:   #FBFBFD;
+  --white:   #FFFFFF;
+
+  /* Primary — cobalt */
+  --blue-800: #16308C;
+  --blue-700: #1E3FB8;
+  --blue-600: #2A50DB;
+  --blue-500: #3A63F5;
+  --blue-400: #6485F8;
+  --blue-300: #9FB3FB;
+  --blue-200: #C9D4FD;
+  --blue-100: #E5EAFE;
+  --blue-50:  #F2F5FF;
+
+  /* Accent — poker-chip gold */
+  --gold-700: #B96E12;
+  --gold-600: #D9871A;
+  --gold-500: #F2A93B;
+  --gold-400: #F6BC60;
+  --gold-300: #F9D08A;
+  --gold-100: #FCEFD6;
+
+  /* Semantic hues */
+  --green-600: #15824F;
+  --green-500: #1F9D63;
+  --green-100: #DCF3E7;
+  --red-600:   #C8323A;
+  --red-500:   #E5484D;
+  --red-100:   #FBE0E1;
+
+  /* ── Semantic aliases ── */
+  --bg-app:        var(--ink-50);
+  --bg-felt:       #14342A;            /* the voting "table" */
+  --surface-card:  var(--white);
+  --surface-sunk:  var(--ink-50);
+  --surface-raised:var(--white);
+
+  --text-strong:   var(--ink-900);
+  --text-body:     var(--ink-700);
+  --text-muted:    var(--ink-500);
+  --text-faint:    var(--ink-400);
+  --text-on-brand: var(--white);
+  --text-on-felt:  #EAF2EE;
+
+  --border-subtle: var(--ink-100);
+  --border-default:var(--ink-200);
+  --border-strong: var(--ink-300);
+
+  --brand:         var(--blue-500);
+  --brand-hover:   var(--blue-600);
+  --brand-press:   var(--blue-700);
+  --brand-soft:    var(--blue-50);
+  --brand-ring:    color-mix(in oklch, var(--blue-500) 40%, transparent);
+
+  --accent:        var(--gold-500);
+  --accent-soft:   var(--gold-100);
+
+  --success:       var(--green-500);
+  --success-soft:  var(--green-100);
+  --danger:        var(--red-500);
+  --danger-soft:   var(--red-100);
+  --warning:       var(--gold-600);
+  --warning-soft:  var(--gold-100);
+}

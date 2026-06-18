@@ -1,0 +1,39 @@
+@import url('./tokens/fonts.css');
+@import url('./tokens/colors.css');
+@import url('./tokens/typography.css');
+@import url('./tokens/spacing.css');
+@import url('./tokens/radius.css');
+
+/* ── Join screen layout (responsive) ──────────────────────────────────
+   A two-pane hero on wide screens; collapses to a single centred column
+   (felt pane hidden) on narrow screens. */
+.pp-join {
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  font-family: var(--font-body);
+  background: var(--bg-app);
+}
+.pp-join-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 6%;
+}
+.pp-join-form-inner {
+  width: 100%;
+  max-width: 440px;
+}
+.pp-join-felt {
+  background: var(--bg-felt);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+@media (max-width: 880px) {
+  .pp-join { grid-template-columns: 1fr; }
+  .pp-join-felt { display: none; }
+}
