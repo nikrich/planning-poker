@@ -72,9 +72,10 @@ export class PokerRoom implements DurableObject {
     return (ws.deserializeAttachment() as Attachment | null) ?? null;
   }
 
-  private roster(): Participant[] {
+  private roster(exclude?: WebSocket): Participant[] {
     return this.ctx
       .getWebSockets()
+      .filter((ws) => ws !== exclude)
       .map((ws) => this.attachment(ws))
       .filter((a): a is Attachment => a != null)
       .map((a) => ({ id: a.id, name: a.name, isSpectator: a.isSpectator }));
@@ -110,7 +111,8 @@ export class PokerRoom implements DurableObject {
       this.state = reduce(this.state, { t: "dropParticipant", pid: att.id });
       void this.persist();
     }
-    this.broadcast();
+    // Exclude the departing socket: getWebSockets() may still include it here.
+    this.broadcast(ws);
   }
 
   private toAction(msg: ClientMsg, att: Attachment): Action | null {
@@ -131,9 +133,9 @@ export class PokerRoom implements DurableObject {
     if (this.state) await this.ctx.storage.put("state", this.state);
   }
 
-  private broadcast(): void {
+  private broadcast(exclude?: WebSocket): void {
     if (!this.state) return;
-    const roster = this.roster();
+    const roster = this.roster(exclude);
     const base = {
       type: "state" as const,
       roomName: this.state.roomName,
@@ -142,6 +144,7 @@ export class PokerRoom implements DurableObject {
       round: this.state.round,
     };
     for (const ws of this.ctx.getWebSockets()) {
+      if (ws === exclude) continue; // departing socket
       const att = this.attachment(ws);
       if (!att) continue; // hasn't said hello yet
       const payload: StateMsg = { ...base, you: { id: att.id } };
