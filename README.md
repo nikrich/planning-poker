@@ -2,7 +2,8 @@
 
 Real-time, multiplayer [planning poker](https://en.wikipedia.org/wiki/Planning_poker) on Cloudflare. Everyone picks a card in private, the cards flip at once, and you discuss the spread instead of anchoring on the loudest number.
 
-Built from a [Claude Design](https://claude.ai/design) project (`Planning Poker.html`) — the original was a single-player simulation with bot voters and `localStorage`; this is the same UI turned into genuine multiplayer.
+<img width="1595" height="830" alt="image" src="https://github.com/user-attachments/assets/c48caeec-5504-4938-b7a1-725e315c8233" />
+
 
 ## Stack
 
