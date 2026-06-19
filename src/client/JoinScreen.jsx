@@ -56,7 +56,7 @@ export function JoinScreen() {
             <div style={{ display: "flex", gap: 8 }}>{["fibonacci", "tshirt", "pow2"].map(deckBtn)}</div>
           </div>
           <label style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer", userSelect: "none" }}>
-            <span onClick={() => setSpectator((s) => !s)} style={{
+            <span style={{
               width: 38, height: 22, borderRadius: 999, flex: "none", position: "relative",
               background: spectator ? "var(--brand)" : "var(--border-strong)", transition: "background var(--dur-fast) var(--ease-out)",
             }}>
